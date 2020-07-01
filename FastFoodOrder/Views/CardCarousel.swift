@@ -18,9 +18,10 @@ struct CardCarousel: View {
     
     let width: CGFloat
     let bottomOffset: CGFloat
-    var cardWidth: CGFloat = 0
-    var totalMovement: CGFloat = 0
-    var maxOffset: CGFloat = 0
+    let totalMovement: CGFloat
+    let maxOffset: CGFloat
+    let cardWidth: CGFloat
+    var items : [RestaurantCarouselItem]
 
     static let spacing : CGFloat = 8
     static let widthOfHiddenCards : CGFloat = 32
@@ -40,15 +41,21 @@ struct CardCarousel: View {
         totalMovement = cardWidth + CardCarousel.spacing
         _dragged = .init(initialValue: maxOffset)
         _accumulated = .init(initialValue: maxOffset)
+        print("max offset: \(maxOffset)")
+        items = [RestaurantCarouselItem]()
+        items.append(contentsOf: viewModel.restaurants.map({ (rest) -> RestaurantCarouselItem in
+            return RestaurantCarouselItem(rest, index: self.viewModel.getIndex(rest)!, totalMovement: self.totalMovement, maxOffset: self.maxOffset)
+        }))
     }
     
     var body: some View {
+        for i in 0..<self.viewModel.restaurants.count {
+            self.items[i].moved = self.dragged
+        }
         return HStack(alignment: .center, spacing: CardCarousel.spacing) {
-            ForEach(viewModel.restaurants, id: \.self.id) { rest in
-                 
-                 RestaurantCard(rest, width: self.cardWidth, bottomOffset: self.bottomOffset, totalMovement: self.totalMovement, maxOffset: self.maxOffset, moved: self.$dragged).environmentObject(self.viewModel)
-                        .transition(AnyTransition.slide)
-                      
+            ForEach(items, id: \.self.id) { item in
+                RestaurantCard(item, width: self.cardWidth, bottomOffset: self.bottomOffset)
+                .transition(AnyTransition.slide)
             }
         }
         .offset(x: dragged, y: 0)
@@ -58,9 +65,11 @@ struct CardCarousel: View {
                     return
                 }
                 self.dragged = max(min(self.accumulated + $0.translation.width, self.maxOffset), 0 - self.maxOffset)
+                for i in 0..<self.viewModel.restaurants.count {
+                    self.items[i].moved = self.dragged
+                }
             })
             .onEnded {
-                
                 var index = CardCarousel.flickMode ? self.viewModel.currentRestaurantIndex : Int(((self.maxOffset - self.dragged) / self.width).rounded())
                 if ($0.translation.width < -50) {
                     index += 1
@@ -74,6 +83,10 @@ struct CardCarousel: View {
                 let offset = self.maxOffset - self.totalMovement * CGFloat(index)
                 self.dragged = offset
                 self.accumulated = self.dragged
+                for i in 0..<self.viewModel.restaurants.count {
+                    self.items[i].isSelected = (i == index)
+                    self.items[i].moved = offset
+                }
         })
     }
 }

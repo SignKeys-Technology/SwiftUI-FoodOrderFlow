@@ -11,6 +11,7 @@
 		0C79363D24A9AC2300FBC302 /* MealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C79363C24A9AC2300FBC302 /* MealCard.swift */; };
 		0C8E5D7624AAE13B0067C768 /* HeroViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E5D7524AAE13B0067C768 /* HeroViewWrapper.swift */; };
 		0C8E5D7824AAF5C30067C768 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E5D7724AAF5C30067C768 /* ScaleButtonStyle.swift */; };
+		0C92624624AC2AED005B9006 /* RestaurantCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C92624524AC2AED005B9006 /* RestaurantCarouselItem.swift */; };
 		0CB8EF0524AA00A50057C788 /* HomeViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8EF0424AA00A50057C788 /* HomeViewWrapper.swift */; };
 		0CB8EF0824AA01180057C788 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 0CB8EF0724AA01180057C788 /* Hero */; };
 		0CB8EF0A24AA019C0057C788 /* RestaurantViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8EF0924AA019C0057C788 /* RestaurantViewWrapper.swift */; };
@@ -44,6 +45,7 @@
 		0C79363C24A9AC2300FBC302 /* MealCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCard.swift; sourceTree = "<group>"; };
 		0C8E5D7524AAE13B0067C768 /* HeroViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewWrapper.swift; sourceTree = "<group>"; };
 		0C8E5D7724AAF5C30067C768 /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
+		0C92624524AC2AED005B9006 /* RestaurantCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCarouselItem.swift; sourceTree = "<group>"; };
 		0CB8EF0424AA00A50057C788 /* HomeViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewWrapper.swift; sourceTree = "<group>"; };
 		0CB8EF0924AA019C0057C788 /* RestaurantViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewWrapper.swift; sourceTree = "<group>"; };
 		0CBC54AF24AB3F6500B3F235 /* HeroExts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroExts.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				0CD93B3F24A5B27B0094F2F7 /* FoodCategory.swift */,
 				0CD93B4924A5DDBC0094F2F7 /* ListItem.swift */,
 				0C79363A24A9A99800FBC302 /* Meal.swift */,
+				0C92624524AC2AED005B9006 /* RestaurantCarouselItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				0CE827D624A48E98006CA309 /* CardCarousel.swift in Sources */,
 				0CD93B4824A5DBD80094F2F7 /* CategoryCard.swift in Sources */,
 				0CBC54B024AB3F6500B3F235 /* HeroExts.swift in Sources */,
+				0C92624624AC2AED005B9006 /* RestaurantCarouselItem.swift in Sources */,
 				0CE827AC24A43EC3006CA309 /* AppDelegate.swift in Sources */,
 				0CD93B3C24A590A10094F2F7 /* NumberExtensions.swift in Sources */,
 				0CE827D424A4816D006CA309 /* HomeView.swift in Sources */,

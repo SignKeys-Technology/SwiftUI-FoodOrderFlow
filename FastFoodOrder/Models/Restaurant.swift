@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct Restaurant {
+struct Restaurant: Identifiable {
     let id = UUID().uuidString
     var name: String
     var description: String

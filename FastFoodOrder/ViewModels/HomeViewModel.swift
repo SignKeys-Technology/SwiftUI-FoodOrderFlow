@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
             print("Current restaurant: \(currentRestaurant.name)")
         }
     }
+    
     var currentRestaurantIndex : Int {
         get {
             return getIndex(currentRestaurant)!
