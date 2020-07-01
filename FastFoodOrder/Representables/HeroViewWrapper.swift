@@ -41,7 +41,7 @@ struct HeroViewWrapper<TView: View>: UIViewRepresentable {
         init(_ representable: HeroViewWrapper<TView>, view: TView, heroId: String? = nil, modifiers: [HeroModifier]? = nil) {
             super.init(frame: CGRect.zero)
             self.representable = representable
-            isOpaque = false
+            isOpaque = false //! Important for Text / UILabel
             hero.id = heroId
             let hostingView = UIHostingController(rootView: view).view
             hostingView?.backgroundColor = .clear

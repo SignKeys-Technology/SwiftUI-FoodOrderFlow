@@ -42,11 +42,13 @@ struct MealCard: View {
                             .resizable()
                             .foregroundColor(.darkGray)
                         .padding(6)
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(color: Color(#colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)), radius: 1, x: 1, y: 1)
                     }
-                    .frame(width: 20, height: 20, alignment: .center)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(color: Color(#colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)), radius: 1, x: 1, y: 1)
+                    .buttonStyle(ScaleButtonStyle(step: 0.6))
+                    
                 }
             }
             .padding(8)
