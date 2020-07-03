@@ -69,7 +69,7 @@ struct RestaurantView: View {
                 .foregroundColor(Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
                 .heroWrap("\(self.viewModel.restaurant.id).info", fitHeight: true)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-
+                
                 Text(self.viewModel.restaurant.orderTimeString)
                     .font(.system(size: 13))
                     .fontWeight(.medium)
@@ -78,7 +78,7 @@ struct RestaurantView: View {
                     .background(
                         Capsule()
                             .foregroundColor(Color.secondaryBackground)
-                    )
+                )
                     .heroWrap("\(viewModel.restaurant.id).orderTime", fitHeight: true)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16))
                 
@@ -117,54 +117,58 @@ struct RestaurantView: View {
                 }
             }
             .padding(.top, 20)
-            .background(
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.white)
-                            .background(self.viewModel.restaurant.color)
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .offset(x: 0, y: 10)
-                            .edgesIgnoringSafeArea(.bottom)
-                    }
-                    .heroWrap("\(self.viewModel.restaurant.id).bg",
-                        modifiers: [.useLayerRenderSnapshot])
+            .background(ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.white)
+                    .background(self.viewModel.restaurant.color)
+                
+                Rectangle()
+                    .foregroundColor(isHeaderCollapsed ? Color.blue : .white)
+                    .offset(x: 0, y: 10)
                     .edgesIgnoringSafeArea(.bottom)
-            )
+            }
+            .heroWrap("\(self.viewModel.restaurant.id).bg",
+                modifiers: [.useLayerRenderSnapshot])
+                .edgesIgnoringSafeArea(.bottom)
+                .overlay(isHeaderCollapsed ? Color.white : Color.clear))
         }
         .animation(.easeInOut)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            viewModel.restaurant.color
-            .edgesIgnoringSafeArea(.all))
-        .navigationBarTitle(Text(""), displayMode: .inline)
-        .navigationBarItems(
-            leading: Button(action: {
-                self.onBack?()
-            }, label: {
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-                    .frame(width: 22, height: 22, alignment: .leading)
-            }),
-            trailing: Button(action: {
-                //TODO
-            }, label: {
-                Image(systemName: "magnifyingglass").resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-                    .frame(width: 22, height: 22, alignment: .trailing)
-            }))
+            (self.isHeaderCollapsed ? Color.white : viewModel.restaurant.color)
+                .edgesIgnoringSafeArea(.all))
+            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationBarItems(
+                leading: Button(action: {
+                    self.onBack?()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(isHeaderCollapsed ? .black : .white)
+                        .frame(width: 22, height: 22, alignment: .leading)
+                }),
+                trailing: Button(action: {
+                    //TODO
+                }, label: {
+                    Image(systemName: "magnifyingglass").resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(isHeaderCollapsed ? .black : .white)
+                        .frame(width: 22, height: 22, alignment: .trailing)
+                }))
+        
         
     }
     
     func onCategoriesDisappear() {
+        
         guard !isHeaderCollapsed
             else {
                 return
         }
-        self.isHeaderCollapsed = true
+        withAnimation { 
+            self.isHeaderCollapsed = true
+        }
     }
     
     
